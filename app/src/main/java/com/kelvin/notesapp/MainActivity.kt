@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding
     private lateinit var database: NoteDatabase
-
+    private  lateinit var noteAdapter: Note
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = Room.databaseBuilder(applicationContext,NoteDatabase::class.java,
-            "notes_database").build()
+            "notes_database").allowMainThreadQueries().build()
     }
 
     private  fun saveNote(title: String, context: String){
